@@ -24,7 +24,7 @@ jobs:
     - name: update submodule
       run: |
         git submodule update --init --recursive
-        cp -f Dockerfile /leavexchat-bot
+        cp -f Dockerfile ${GITHUB_WORKSPACE}/leavexchat-bot
         cd ${GITHUB_WORKSPACE}/leavexchat-bot
 
     - name: build and push image
