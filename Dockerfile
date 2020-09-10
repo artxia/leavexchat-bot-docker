@@ -34,8 +34,7 @@ RUN  git clone https://github.com/UnsignedInt8/leavexchat-bot.git /leavexchat-bo
     && npm i \
     && npm run build \
     && rm -fr /tmp/* ~/.npm
-RUN  npm run puppet-install \
-    && sudo rm -fr /tmp/* ~/.npm
+    
 
 WORKDIR /leavexchat-bot
 ADD start.sh .
