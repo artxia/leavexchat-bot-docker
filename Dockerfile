@@ -17,6 +17,7 @@ RUN set -x \
 	&& git clone https://github.com/UnsignedInt8/leavexchat-bot.git /leavexchat-bot \
 	&& cd /leavexchat-bot \
     && npm i \
+    && apk del .build-deps \
     && npm run build
 
 WORKDIR /leavexchat-bot
