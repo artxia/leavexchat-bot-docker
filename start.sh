@@ -1,4 +1,4 @@
 #!/bin/bash
 
 
-node main/index.js -c config.json
+node build/main/index.js -c /config.json
