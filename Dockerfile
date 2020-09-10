@@ -8,7 +8,7 @@ RUN set -x \
     && apk update \
     && apk --update add tzdata \
     && apk add --no-cache nodejs npm \
-    && apk add --no-cache --virtual .build-deps make git
+    && apk add --no-cache --virtual .build-deps make gcc g++ python3 git
     
 RUN ln -sf /usr/share/zoneinfo/Asia/Shanghai /etc/localtime \
     && echo "Asia/Shanghai" > /etc/timezone
