@@ -6,20 +6,17 @@ ENV TZ 'Asia/Shanghai'
 
 RUN set -x \
     && apk update \
-    && apk --update add tzdata \
-    && apk add --no-cache nodejs npm \
-    && apk add --no-cache --virtual .build-deps make gcc g++ python3 git
+    && apk --update add tzdata 
     
 RUN ln -sf /usr/share/zoneinfo/Asia/Shanghai /etc/localtime \
     && echo "Asia/Shanghai" > /etc/timezone
     
-ARG VERSION
+FROM node:12
 RUN set -x \
 	&& git clone https://github.com/UnsignedInt8/leavexchat-bot.git /leavexchat-bot \
 	&& cd /leavexchat-bot \
     && npm i \
-    && npm run build \
-    && apk del .build-deps
+    && npm run build
 
 WORKDIR /leavexchat-bot
 
