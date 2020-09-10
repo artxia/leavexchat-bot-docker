@@ -5,7 +5,7 @@ ENV LANG C.UTF-8
 ENV TZ 'Asia/Shanghai'
 
 RUN set -x \
-    && apk --update \
+    && apk update \
     && apk --update add tzdata \
     && apk add --no-cache nodejs npm \
     && apk add --no-cache --virtual .build-deps make git
