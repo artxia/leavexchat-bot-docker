@@ -2,8 +2,8 @@ name: Auto Build
 
 on:
   push:
-#    branches:
-#      - master
+    branches:
+      - master
     tags:
       - '*'
 #  pull_request:
@@ -28,4 +28,6 @@ jobs:
         username: ${{ secrets.DOCKER_USERNAME }}
         password: ${{ secrets.DOCKER_PASSWORD }}
         repository: artxia/leavexchat-bot-docker
-        tags: latest
+        tag_with_ref: true
+        add_git_labels: true
+        push: ${{ startsWith(github.ref, 'refs/tags/') }}
