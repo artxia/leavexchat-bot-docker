@@ -16,5 +16,6 @@ RUN  git clone https://github.com/UnsignedInt8/leavexchat-bot.git /leavexchat-bo
     && npm run build
 
 WORKDIR /leavexchat-bot
+ADD start.sh .
 
-ENTRYPOINT ["node", "/build/main/index.js", "-c", "/config.json"]
+CMD /bin/sh /start.sh
