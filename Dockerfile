@@ -13,7 +13,6 @@ RUN ln -sf /usr/share/zoneinfo/Asia/Shanghai /etc/localtime \
     
 FROM node:12
 RUN set -x \
-	&& cd /leavexchat-bot \
     && npm i \
     && npm run build
 
