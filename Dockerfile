@@ -13,9 +13,10 @@ RUN apt-get update \
        apt-utils autoconf automake bash build-essential ca-certificates curl coreutils ffmpeg figlet git \
        gnupg2 jq libgconf-2-4 libtool moreutils python-dev python-dev shellcheck sudo vim wget \
     && apt-get purge --auto-remove \
-    && apt-get install -y tzdata \
+    && DEBIAN_FRONTEND=noninteractive apt-get install tzdata \
     && ln -sf /usr/share/zoneinfo/Asia/Shanghai /etc/localtime \
     && echo "Asia/Shanghai" > /etc/timezone \
+    && dpkg-reconfigure --frontend noninteractive tzdata \
     && rm -rf /tmp/* /var/lib/apt/lists/*
 
 RUN  wget -q -O - https://dl-ssl.google.com/linux/linux_signing_key.pub | apt-key add - \
