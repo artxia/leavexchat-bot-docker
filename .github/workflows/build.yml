@@ -21,18 +21,11 @@ jobs:
     - name: checkout
       uses: actions/checkout@v2
 
-    - name: update submodule
-      run: |
-        git submodule update --init --recursive
-        mv -f Dockerfile ${GITHUB_WORKSPACE}/leavexchat-bot
-        cd ${GITHUB_WORKSPACE}/leavexchat-bot
-
     - name: build and push image
       uses: docker/build-push-action@v1
 
       with:
         username: ${{ secrets.DOCKER_USERNAME }}
         password: ${{ secrets.DOCKER_PASSWORD }}
-        dockerfile: ${GITHUB_WORKSPACE}/leavexchat-bot/Dockerfile
         repository: artxia/leavexchat-bot-docker
         tags: latest
