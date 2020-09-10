@@ -19,6 +19,11 @@ RUN apt-get update \
     && dpkg-reconfigure --frontend noninteractive tzdata \
     && rm -rf /tmp/* /var/lib/apt/lists/*
 
+RUN curl -sL https://deb.nodesource.com/setup_12.x | sudo -E bash - \
+    && apt-get update && apt-get install -y --no-install-recommends nodejs \
+    && apt-get purge --auto-remove \
+    && rm -rf /tmp/* /var/lib/apt/lists/*
+
 RUN  wget -q -O - https://dl-ssl.google.com/linux/linux_signing_key.pub | apt-key add - \
     && sh -c 'echo "deb [arch=amd64] http://dl.google.com/linux/chrome/deb/ stable main" >> /etc/apt/sources.list.d/google.list' \
     && apt-get update \
@@ -28,12 +33,14 @@ RUN  wget -q -O - https://dl-ssl.google.com/linux/linux_signing_key.pub | apt-ke
     && rm -rf /tmp/* /var/lib/apt/lists/* \
     && rm -rf /usr/bin/google-chrome* /opt/google/chrome-unstable
 
-FROM node:12
 RUN  git clone https://github.com/UnsignedInt8/leavexchat-bot.git /leavexchat-bot \
     && cd /leavexchat-bot \
     && npm i \
     && npm run build \
     && rm -fr /tmp/* ~/.npm
+
+RUN  npm run puppet-install \
+  && sudo rm -fr /tmp/* ~/.npm
     
 
 WORKDIR /leavexchat-bot
