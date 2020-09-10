@@ -18,8 +18,12 @@ jobs:
     
     steps:
 
-    - name: Checkout
+    - name: checkout
       uses: actions/checkout@v2
+
+    - name: update submodule
+      run: |
+        git submodule update --init --recursive
 
     - name: build and push image
       uses: docker/build-push-action@v1
