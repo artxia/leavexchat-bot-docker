@@ -19,4 +19,4 @@ RUN set -x \
 
 WORKDIR /leavexchat-bot
 
-ENTRYPOINT ["node","build/main/index.js -c config.json"]
+ENTRYPOINT ["node", "/build/main/index.js", "-c", "/config.json"]
