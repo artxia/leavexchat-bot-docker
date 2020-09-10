@@ -11,8 +11,9 @@ RUN apt-get update \
        libpango-1.0-0 libpangocairo-1.0-0 libstdc++6 libx11-6 libx11-xcb1 libxcb1 \
        libxcursor1 libxdamage1 libxext6 libxfixes3 libxi6 libxrandr2 libxrender1 libxss1 libxtst6 libnss3 \
        apt-utils autoconf automake bash build-essential ca-certificates curl coreutils ffmpeg figlet git \
-       gnupg2 jq libgconf-2-4 libtool moreutils python-dev python-dev shellcheck sudo tzdata vim wget \
+       gnupg2 jq libgconf-2-4 libtool moreutils python-dev python-dev shellcheck sudo vim wget \
     && apt-get purge --auto-remove \
+    && apt-get install -y tzdata \
     && ln -sf /usr/share/zoneinfo/Asia/Shanghai /etc/localtime \
     && echo "Asia/Shanghai" > /etc/timezone \
     && rm -rf /tmp/* /var/lib/apt/lists/*
