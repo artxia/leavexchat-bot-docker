@@ -36,6 +36,7 @@ RUN  wget -q -O - https://dl-ssl.google.com/linux/linux_signing_key.pub | apt-ke
 
 RUN  git clone https://github.com/UnsignedInt8/leavexchat-bot.git /leavexchat-bot \
     && cd /leavexchat-bot \
+    && sed -i 's/"target": "es5"/"target": "es2015"/g' tsconfig.json
     && npm i \
     && npm run build \
     && rm -fr /tmp/* ~/.npm
