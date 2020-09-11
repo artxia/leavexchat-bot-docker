@@ -42,6 +42,6 @@ RUN  git clone https://github.com/UnsignedInt8/leavexchat-bot.git /leavexchat-bo
 
 
 WORKDIR /leavexchat-bot
-ADD start.sh .
+ADD start.sh /leavexchat-bot
 
-CMD chmod +x /leavexchat-bot/start.sh
+CMD chmod +x /start.sh
