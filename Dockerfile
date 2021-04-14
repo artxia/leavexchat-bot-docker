@@ -1,7 +1,7 @@
 FROM node:12-slim as build
 
 RUN apt-get update && apt-get install --yes git curl \
-    && git clone -b new-version https://github.com/UnsignedInt8/leavexchat-bot.git /leavexchat-bot \
+    && git clone https://github.com/UnsignedInt8/leavexchat-bot.git /leavexchat-bot \
     && cd /leavexchat-bot \
     && sed -i 's/"wechaty": "^0.59.8"/"wechaty": "^0.60.3"/g' package.json \
     && sed -i 's/"wechaty-puppet-wechat": "^0.27.0"/"wechaty-puppet-wechat": "^0.28.1"/g' package.json \
